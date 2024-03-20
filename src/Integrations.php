@@ -1,8 +1,8 @@
 <?php
 
-namespace WPCOMSpecialProjects\Scaffold;
+namespace WPCOMSpecialProjects\Team51PatternInserter;
 
-use WPCOMSpecialProjects\Scaffold\Integrations\WC_Subscriptions;
+use WPCOMSpecialProjects\Team51PatternInserter\Integrations\WC_Subscriptions;
 
 defined( 'ABSPATH' ) || exit;
 
