@@ -125,48 +125,4 @@ class Plugin {
 	}
 
 	// endregion
-
-	// region HOOKS
-
-	/**
-	 * Initializes the plugin components if WooCommerce is activated.
-	 *
-	 * @since   1.0.0
-	 * @version 1.0.0
-	 *
-	 * @return  void
-	 */
-	public function maybe_initialize(): void {
-		if ( ! $this->is_active( $minimum_wc_version ) ) {
-			add_action(
-				'admin_notices',
-				static function() use ( $minimum_wc_version ) {
-					if ( \is_null( $minimum_wc_version ) ) {
-						$message = \wp_sprintf(
-							/* translators: 1. Plugin name, 2. Plugin version. */
-							__( '<strong>%1$s (v%2$s)</strong> requires WooCommerce. Please install and/or activate WooCommerce!', 'wpcomsp-team51-pattern-inserter' ),
-							WPCOMSP_T5PI_METADATA['Name'],
-							WPCOMSP_T5PI_METADATA['Version']
-						);
-					} else {
-						$message = \wp_sprintf(
-							/* translators: 1. Plugin name, 2. Plugin version, 3. Minimum WC version. */
-							__( '<strong>%1$s (v%2$s)</strong> requires WooCommerce %3$s or newer. Please install, update, and/or activate WooCommerce!', 'wpcomsp-team51-pattern-inserter' ),
-							WPCOMSP_T5PI_METADATA['Name'],
-							WPCOMSP_T5PI_METADATA['Version'],
-							$minimum_wc_version
-						);
-					}
-
-					$html_message = \wp_sprintf( '<div class="error notice wpcomsp-team51-pattern-inserter-error">%s</div>', wpautop( $message ) );
-					echo \wp_kses_post( $html_message );
-				}
-			);
-			return;
-		}
-
-		$this->initialize();
-	}
-
-	// endregion
 }
