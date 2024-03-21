@@ -1,4 +1,4 @@
-# team51-pattern-inserter
+# Team 51 Pattern Inserter
 
 **Contributors:** wpcomspecialprojects \
 **Tags:** \
@@ -14,10 +14,6 @@
 ## Description
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed leo ligula, aliquam et sem luctus, placerat facilisis orci. Cras faucibus, odio ac aliquet scelerisque, nisi ligula dignissim nisi, sed tincidunt magna libero vitae dui. Sed varius lectus turpis, fringilla maximus libero posuere nec. Aenean volutpat pharetra sem, et cursus leo sodales quis.
-
-## Installation
-
-This plugin requires WooCommerce 7.4+ to run. If you're running a lower version, please update first. After you made sure that you're running a supported version of WooCommerce, you may install `Team 51 Pattern Inserter` either manually or through your site's plugins page.
 
 ### INSTALL FROM WITHIN WORDPRESS
 

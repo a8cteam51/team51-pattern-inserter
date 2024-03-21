@@ -13,26 +13,6 @@ defined( 'ABSPATH' ) || exit;
 class Plugin {
 	// region FIELDS AND CONSTANTS
 
-	/**
-	 * The blocks component.
-	 *
-	 * @since   1.0.0
-	 * @version 1.0.0
-	 *
-	 * @var     Blocks|null
-	 */
-	public ?Blocks $blocks = null;
-
-	/**
-	 * The integrations component.
-	 *
-	 * @since   1.0.0
-	 * @version 1.0.0
-	 *
-	 * @var     Integrations|null
-	 */
-	public ?Integrations $integrations = null;
-
 	// endregion
 
 	// region MAGIC METHODS
@@ -139,11 +119,9 @@ class Plugin {
 	 * @return  void
 	 */
 	protected function initialize(): void {
-		$this->blocks = new Blocks();
-		$this->blocks->initialize();
-
-		$this->integrations = new Integrations();
-		$this->integrations->initialize();
+		foreach ( glob( WPCOMSP_T5PI_PATH . 'includes/*.php' ) as $file ) {
+			require_once $file;
+		}
 	}
 
 	// endregion

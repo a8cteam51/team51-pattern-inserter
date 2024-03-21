@@ -12,7 +12,7 @@
  * @wordpress-plugin
  * Plugin Name:             Team 51 Pattern Inserter
  * Plugin URI:              https://wpspecialprojects.wordpress.com
- * Description:             
+ * Description:             Inserts official Team 51 patterns into your content.
  * Version:                 1.0.0
  * Requires at least:       6.2
  * Tested up to:            6.2
@@ -63,19 +63,5 @@ if ( ! is_file( WPCOMSP_T5PI_PATH . '/vendor/autoload.php' ) ) {
 }
 require_once WPCOMSP_T5PI_PATH . '/vendor/autoload.php';
 
-// Initialize the plugin if system requirements check out.
-$wpcomsp_t5pi_requirements = validate_plugin_requirements( WPCOMSP_T5PI_BASENAME );
-define( 'WPCOMSP_T5PI_REQUIREMENTS', $wpcomsp_t5pi_requirements );
-
-if ( $wpcomsp_t5pi_requirements instanceof WP_Error ) {
-	add_action(
-		'admin_notices',
-		static function() use ( $wpcomsp_t5pi_requirements ) {
-			$html_message = wp_sprintf( '<div class="error notice wpcomsp-team51-pattern-inserter-error">%s</div>', $wpcomsp_t5pi_requirements->get_error_message() );
-			echo wp_kses_post( $html_message );
-		}
-	);
-} else {
-	require_once WPCOMSP_T5PI_PATH . 'functions.php';
-	add_action( 'plugins_loaded', array( wpcomsp_t5pi_get_plugin_instance(), 'maybe_initialize' ) );
-}
+require_once WPCOMSP_T5PI_PATH . 'functions.php';
+add_action( 'plugins_loaded', array( wpcomsp_t5pi_get_plugin_instance(), 'initialize' ) );

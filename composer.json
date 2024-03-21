@@ -49,10 +49,7 @@
   "autoload": {
     "psr-4": {
       "WPCOMSpecialProjects\\Team51PatternInserter\\": "src/"
-    },
-    "classmap": [
-      "models/"
-    ]
+    }
   },
   "autoload-dev": {
 
