@@ -50,12 +50,15 @@ class Patterns {
 			}
 
 			if ( isset( $data['patterns'] ) && is_array( $data['patterns'] ) ) {
+
 				// Store update data for Settings page
 				update_option(
 					self::PATTERN_INFO_OPTION,
 					array(
 						'last_update'  => time(),
-						'num_patterns' => count( $data['patterns'] ),
+						'num_patterns' => array_reduce( $data['patterns'], function ( $carry, $category ) {
+							return $carry + ( isset( $category['items'] ) ? count( $category['items'] ) : 0 );
+						}, 0 ),
 					)
 				);
 			}

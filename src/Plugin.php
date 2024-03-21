@@ -87,6 +87,7 @@ class Plugin {
 		}
 
 		( new Patterns() )->initialize();
+		( new Settings() )->initialize();
 	}
 
 	// endregion
