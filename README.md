@@ -1,6 +1,7 @@
 # Team 51 Pattern Inserter
 
-### [Download Latest Stable Version](https://github.com/a8cteam51/team51-pattern-inserter/releases/latest/download/team51-pattern-inserter.zip)
+> [!NOTE]  
+> You can [download the latest version here](https://github.com/a8cteam51/team51-pattern-inserter/releases/latest/download/team51-pattern-inserter.zip)
 
 **Contributors:** wpcomspecialprojects \
 **Tags:** \
@@ -23,9 +24,9 @@ The Team 51 Pattern Inserter plugin enables WordPress sites to easily integrate 
 * Easily organize and find patterns within logical categories.
 * Utilizes WordPress transients for efficient caching and minimized server requests.
 
-### INSTALL
+## Install
 
-1. Download the plugin from https://wordpress.org/plugins/ and unzip the archive.
+1. [Download the plugin here](https://github.com/a8cteam51/team51-pattern-inserter/releases/latest/download/team51-pattern-inserter.zip) and unzip the archive.
 1. Upload the `team51-pattern-inserter` folder to the `/wp-content/plugins/` directory.
 1. Activate the plugin through the `Plugins` menu in WordPress.
 
