@@ -18,7 +18,7 @@ class Patterns {
 	 * @return void
 	 */
 	public function initialize(): void {
-		add_action( 'init', [ $this, 'register_patterns_from_github' ] );
+		add_action( 'init', array( $this, 'register_patterns_from_github' ) );
 	}
 
 	/**
@@ -53,7 +53,7 @@ class Patterns {
 				$category       = $data['categories'][ $category_slug ] ?? null;
 				$category_title = $category['title'] ?? ucfirst( $category_slug );
 
-				register_block_pattern_category( $category_slug, [ 'label' => $category_title ] );
+				register_block_pattern_category( $category_slug, array( 'label' => $category_title ) );
 
 				if ( isset( $category_data['items'] ) && is_array( $category_data['items'] ) ) {
 					foreach ( $category_data['items'] as $key => $pattern ) {
@@ -62,12 +62,12 @@ class Patterns {
 
 						register_block_pattern(
 							'wpcom_special_projects/' . $category_slug . '/' . sanitize_title_with_dashes( $pattern_title ),
-							[
+							array(
 								'title'       => $pattern_title,
 								'content'     => $pattern_content,
-								'categories'  => [ $category_slug ],
+								'categories'  => array( $category_slug ),
 								'description' => $category_title,
-							]
+							)
 						);
 					}
 				}
