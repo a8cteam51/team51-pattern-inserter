@@ -1,5 +1,7 @@
 <?php
 /**
+ * Settings page template.
+ *
  * @var array $options The plugin options.
  */
 ?>

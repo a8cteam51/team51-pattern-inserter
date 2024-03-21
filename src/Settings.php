@@ -4,13 +4,18 @@ namespace WPcomSpecialProjects\Team51PatternInserter;
 
 defined( 'ABSPATH' ) || exit; // @phpstan-ignore-line
 
+/**
+ * Settings class.
+ *
+ * @since   1.0.0
+ * @version 1.0.0
+ */
 class Settings {
 
 	/**
 	 * Initializes the class.
 	 *
-	 * @since  1.0.0
-	 * @version 1.0.0
+	 * @return void
 	 */
 	public function initialize(): void {
 		add_action( 'admin_menu', array( $this, 'add_settings_page' ) );
@@ -34,6 +39,11 @@ class Settings {
 		);
 	}
 
+	/**
+	 * Display settings page.
+	 *
+	 * @return void
+	 */
 	public function display_settings(): void {
 		$options = get_option( 'wpcomsp_team51_pattern_inserter' );
 
@@ -46,7 +56,7 @@ class Settings {
 
 		// if last_updated is a number, convert it to a date
 		if ( is_numeric( $options['last_update'] ) ) {
-			$options['last_update'] = date( 'Y-m-d H:i:s', $options['last_update'] );
+			$options['last_update'] = gmdate( 'Y-m-d H:i:s', $options['last_update'] );
 		}
 
 		if ( isset( $_POST['clear_cache'] ) && wp_verify_nonce( $_POST['clear_cache_nonce'], 'clear_cache' ) ) {
@@ -58,6 +68,6 @@ class Settings {
 		$html = ob_get_contents();
 		ob_end_clean();
 
-		echo $html;
+		echo esc_html( $html );
 	}
 }
