@@ -13,42 +13,37 @@
 
 ## Description
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed leo ligula, aliquam et sem luctus, placerat facilisis orci. Cras faucibus, odio ac aliquet scelerisque, nisi ligula dignissim nisi, sed tincidunt magna libero vitae dui. Sed varius lectus turpis, fringilla maximus libero posuere nec. Aenean volutpat pharetra sem, et cursus leo sodales quis.
+The Team 51 Pattern Inserter plugin enables WordPress sites to easily integrate custom block patterns built by the WordPress.com Special Projects Team. This tool simplifies the process of updating and distributing new patterns across multiple sites, ensuring design consistency and efficiency in content creation.
 
-### INSTALL FROM WITHIN WORDPRESS
+## Features
 
-1. Visit the plugins page withing your dashboard and select `Add New`.
-1. Search for `Team 51 Pattern Inserter` and click the `Install Now` button.
-1. Activate the plugin from within your `Plugins` page.
+* Patterns are fetched and updated directly from a GitHub repository, ensuring that your site always has the latest patterns.
+* Easily organize and find patterns within logical categories.
+* Utilizes WordPress transients for efficient caching and minimized server requests.
 
-### INSTALL MANUALLY
+### INSTALL
 
 1. Download the plugin from https://wordpress.org/plugins/ and unzip the archive.
 1. Upload the `team51-pattern-inserter` folder to the `/wp-content/plugins/` directory.
 1. Activate the plugin through the `Plugins` menu in WordPress.
 
-### AFTER ACTIVATION
+## Usage
 
-If the minimum required version of WooCommerce is present, you will find a section present in the `Advanced` tab of the WooCommerce `Settings` page. Aliquam dolor sem, convallis malesuada neque sit amet, dictum mattis velit. Vestibulum at pharetra metus. Suspendisse rhoncus libero nisi, sed rhoncus tortor aliquam pretium.
+Once activated, the plugin automatically fetches and registers the latest block patterns from the [Special Projects Patterns](https://github.com/a8cteam51/special-projects-patterns) GitHub repository. These patterns can then be found and utilized within the block editor under the Patterns tab.
 
 ## Frequently Asked Questions
 
-### How can I get help if I'm stuck?
+### Where do the patterns come from?
 
-Quisque volutpat tortor id varius pulvinar. Vivamus porttitor, mi non auctor pellentesque, leo purus interdum libero, at aliquam justo lectus sed ligula.
+The patterns are sourced from the [Special Projects Patterns](https://github.com/a8cteam51/special-projects-patterns) repository, managed by the WordPress.com Special Projects team, ensuring high-quality and up-to-date design elements for your content creation needs.
 
-### I have a question that is not listed here
+### How can I submit my own pattern to the directory?
 
-Duis efficitur, sapien ac scelerisque placerat, elit justo tempor nisl, ut feugiat magna orci quis odio.
+To contribute a pattern, please submit a pull request to the [Special Projects Patterns](https://github.com/a8cteam51/special-projects-patterns) GitHub repository. Each submission will be reviewed by our team for quality and consistency before inclusion.
 
-## Screenshots
-
-### 1. Example screenshot
-
-[missing image]
 
 ## Changelog
 
-### 1.0.0 (FIRST RELEASE DATE)
+### 1.0.0 - 2024-03-21
 
 * First official release.
