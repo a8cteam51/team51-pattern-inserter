@@ -54,9 +54,9 @@ class Settings {
 			);
 		}
 
-		// if last_updated is a number, convert it to a date
 		if ( is_numeric( $options['last_update'] ) ) {
-			$options['last_update'] = gmdate( 'Y-m-d H:i:s', $options['last_update'] );
+			$time_diff              = human_time_diff( $options['last_update'], current_time( 'timestamp' ) );
+			$options['last_update'] = sprintf( __( '%s ago', 'wpcomsp_team51_pattern_inserter' ), $time_diff );
 		}
 
 		if ( isset( $_POST['clear_cache'] ) && wp_verify_nonce( $_POST['clear_cache_nonce'], 'clear_cache' ) ) {
@@ -68,6 +68,6 @@ class Settings {
 		$html = ob_get_contents();
 		ob_end_clean();
 
-		echo esc_html( $html );
+		echo wp_kses_post( $html );
 	}
 }
