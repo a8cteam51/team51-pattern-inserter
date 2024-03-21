@@ -37,14 +37,60 @@ jobs:
         run: zip -r ${GITHUB_REPOSITORY##*/}.zip . -x "*.git*" -x "node_modules/*" -x "assets/src/*"
         working-directory: ${{ github.workspace }}
 
+      - name: Check if Release Exists
+        id: check_release
+        uses: actions/github-script@v5
+        with:
+          script: |
+            const { data: releases } = await github.rest.repos.listReleases({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+            });
+            const release = releases.find(release => release.tag_name === context.ref_name);
+            if (release) {
+              return release.id;
+            }
+            return '';
+
+      - name: Delete Release if Exists
+        if: steps.check_release.outputs.result != ''
+        uses: actions/github-script@v5
+        with:
+          script: |
+            await github.rest.repos.deleteRelease({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              release_id: ${{ steps.check_release.outputs.result }},
+            });
+
+      - name: Delete Tag if Exists
+        if: steps.check_release.outputs.result != ''
+        uses: actions/github-script@v5
+        with:
+          script: |
+            await github.git.deleteRef({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              ref: 'tags/${{ github.ref_name }}',
+            });
+
       - name: Create Release
         uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: ${{ github.ref }}
+          tag_name: ${{ github.ref_name }}
           release_name: Release ${{ github.ref_name }}
           draft: false
           prerelease: false
           body: "New release of the plugin."
-          assets: ${{ github.workspace }}/${GITHUB_REPOSITORY##*/}.zip
+
+      - name: Upload Release Asset
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./${GITHUB_REPOSITORY##*/}.zip
+          asset_name: ${GITHUB_REPOSITORY##*/}.zip
+          asset_content_type: application/zip
