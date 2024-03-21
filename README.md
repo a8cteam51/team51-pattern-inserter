@@ -1,5 +1,7 @@
 # Team 51 Pattern Inserter
 
+### [Download Latest Stable Version](https://github.com/a8cteam51/team51-pattern-inserter/releases/latest/download/team51-pattern-inserter.zip)
+
 **Contributors:** wpcomspecialprojects \
 **Tags:** \
 **Requires at least:** 6.2 \
