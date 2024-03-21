@@ -56,9 +56,13 @@ class Patterns {
 					self::PATTERN_INFO_OPTION,
 					array(
 						'last_update'  => time(),
-						'num_patterns' => array_reduce( $data['patterns'], function ( $carry, $category ) {
-							return $carry + ( isset( $category['items'] ) ? count( $category['items'] ) : 0 );
-						}, 0 ),
+						'num_patterns' => array_reduce(
+							$data['patterns'],
+							function ( $carry, $category ) {
+								return $carry + ( isset( $category['items'] ) ? count( $category['items'] ) : 0 );
+							},
+							0
+						),
 					)
 				);
 			}

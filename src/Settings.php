@@ -54,11 +54,10 @@ class Settings {
 		}
 
 		ob_start();
-		include( WPCOMSP_T5PI_PATH . 'templates/admin/settings.php' );
+		include WPCOMSP_T5PI_PATH . 'templates/admin/settings.php';
 		$html = ob_get_contents();
 		ob_end_clean();
 
 		echo $html;
 	}
-
 }
