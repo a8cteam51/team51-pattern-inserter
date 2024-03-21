@@ -13,6 +13,11 @@ defined( 'ABSPATH' ) || exit;
 class Patterns {
 
 	/**
+	 * Constants
+	 */
+	public const PATTERN_INFO_OPTION = 'wpcomsp_team51_pattern_inserter';
+
+	/**
 	 * Hooks and filters
 	 *
 	 * @return void
@@ -42,6 +47,17 @@ class Patterns {
 
 			if ( json_last_error() !== JSON_ERROR_NONE ) {
 				return;
+			}
+
+			if ( isset( $data['patterns'] ) && is_array( $data['patterns'] ) ) {
+				// Store update data for Settings page
+				update_option(
+					self::PATTERN_INFO_OPTION,
+					array(
+						'last_update'  => time(),
+						'num_patterns' => count( $data['patterns'] ),
+					)
+				);
 			}
 
 			// Cache the data for 12 hours.
