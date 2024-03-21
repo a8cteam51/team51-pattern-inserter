@@ -118,7 +118,7 @@ class Plugin {
 	 *
 	 * @return  void
 	 */
-	protected function initialize(): void {
+	public function initialize(): void {
 		foreach ( glob( WPCOMSP_T5PI_PATH . 'includes/*.php' ) as $file ) {
 			require_once $file;
 		}
