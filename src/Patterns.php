@@ -60,8 +60,6 @@ class Patterns {
 						$patternTitle   = $pattern['title'] ?? 'Untitled';
 						$patternContent = $pattern['content'] ?? '';
 
-						error_log( 'Pattern: ' . $patternTitle . ' (' . $patternKey . ')' );
-
 						register_block_pattern(
 							'wpcom_special_projects/' . $categorySlug . '/' . sanitize_title_with_dashes( $patternTitle ),
 							[
