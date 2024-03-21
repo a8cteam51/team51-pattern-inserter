@@ -49,24 +49,24 @@ class Patterns {
 		}
 
 		if ( isset( $data['patterns'] ) && is_array( $data['patterns'] ) ) {
-			foreach ( $data['patterns'] as $categorySlug => $categoryData ) {
-				$category      = $data['categories'][ $categorySlug ] ?? null;
-				$categoryTitle = $category['title'] ?? 'Uncategorized';
+			foreach ( $data['patterns'] as $category_slug => $category_data ) {
+				$category       = $data['categories'][ $category_slug ] ?? null;
+				$category_title = $category['title'] ?? ucfirst( $category_slug );
 
-				register_block_pattern_category( $categorySlug, [ 'label' => $categoryTitle ] );
+				register_block_pattern_category( $category_slug, [ 'label' => $category_title ] );
 
-				if ( isset( $categoryData['items'] ) && is_array( $categoryData['items'] ) ) {
-					foreach ( $categoryData['items'] as $patternKey => $pattern ) {
-						$patternTitle   = $pattern['title'] ?? 'Untitled';
-						$patternContent = $pattern['content'] ?? '';
+				if ( isset( $category_data['items'] ) && is_array( $category_data['items'] ) ) {
+					foreach ( $category_data['items'] as $key => $pattern ) {
+						$pattern_title   = $pattern['title'] ?? ucfirst( $key );
+						$pattern_content = $pattern['content'] ?? '';
 
 						register_block_pattern(
-							'wpcom_special_projects/' . $categorySlug . '/' . sanitize_title_with_dashes( $patternTitle ),
+							'wpcom_special_projects/' . $category_slug . '/' . sanitize_title_with_dashes( $pattern_title ),
 							[
-								'title'       => $patternTitle,
-								'content'     => $patternContent,
-								'categories'  => [ $categorySlug ],
-								'description' => $categoryTitle,
+								'title'       => $pattern_title,
+								'content'     => $pattern_content,
+								'categories'  => [ $category_slug ],
+								'description' => $category_title,
 							]
 						);
 					}
