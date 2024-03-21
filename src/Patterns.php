@@ -49,6 +49,17 @@ class Patterns {
 				return;
 			}
 
+			if ( isset( $data['patterns'] ) && is_array( $data['patterns'] ) ) {
+				// Store update data for Settings page
+				update_option(
+					self::PATTERN_INFO_OPTION,
+					array(
+						'last_update'  => time(),
+						'num_patterns' => count( $data['patterns'] ),
+					)
+				);
+			}
+
 			// Cache the data for 12 hours.
 			set_transient( $transient_key, $data, 12 * HOUR_IN_SECONDS );
 		}
@@ -78,13 +89,5 @@ class Patterns {
 				}
 			}
 		}
-		// Store update data for Settings page
-		update_option(
-			self::PATTERN_INFO_OPTION,
-			array(
-				'last_update'  => time(),
-				'num_patterns' => count( $data ),
-			)
-		);
 	}
 }
