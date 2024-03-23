@@ -25,7 +25,7 @@
 
 		<?php wp_nonce_field( 'clear_cache', 'clear_cache_nonce' ); ?>
 		<p class="submit">
-			<input type="submit" name="clear_cache" class="button button-primary" value="Clear cache">
+			<input type="submit" name="clear_cache" class="button button-primary" value="<?php esc_html_e( 'Clear cache', 'wpcomsp-team51-pattern-inserter' ); ?>">
 		</p>
 	</form>
 </div>
