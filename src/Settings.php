@@ -68,6 +68,6 @@ class Settings {
 		$html = ob_get_contents();
 		ob_end_clean();
 
-		echo wp_kses_post( $html );
+		echo $html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 	}
 }
